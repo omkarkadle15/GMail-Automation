@@ -1,6 +1,6 @@
-# Gmail API Python Script
+# Gmail API Python Script with Optional Attachments
 
-This project demonstrates how to use the Gmail API to send emails using Python. Follow these steps to set up and run the script.
+This project demonstrates how to use the Gmail API to send emails, with or without attachments, using Python. Follow these steps to set up and run the script.
 
 ## Prerequisites
 
@@ -76,33 +76,47 @@ Note: Test users must have a Google account. If your application is in testing m
 
 1. Update the `main()` function in `gmail.py` with your desired sender, recipient, subject, and message body.
 
-2. Run the script:
+2. To send an email without attachments:
+   ```python
+   message = create_message(sender, to, subject, message_text)
+   send_message(service, "me", message)
+   ```
+
+3. To send an email with attachments:
+   ```python
+   file_paths = ["/path/to/attachment1.pdf", "/path/to/attachment2.jpg"]
+   message = create_message(sender, to, subject, message_text, file_paths)
+   send_message(service, "me", message)
+   ```
+
+4. Run the script:
    ```
    python gmail.py
    ```
 
-3. On first run, the script will open a new browser window asking you to authorize the application. Log in with your Google account (must be a test user) and grant the requested permissions.
+5. On first run, the script will open a new browser window asking you to authorize the application. Log in with your Google account (must be a test user) and grant the requested permissions.
 
-4. The script will create a `token.json` file to store your access token for future runs.
+6. The script will create a `token.json` file to store your access token for future runs.
 
-5. Check the console output for the sent message ID or any error messages.
+7. Check the console output for the sent message ID or any error messages.
 
 ## File Description
 
-- `gmail.py`: The main Python script that interacts with the Gmail API to send emails.
+- `gmail.py`: The main Python script that interacts with the Gmail API to send emails with or without attachments.
 
 ## Functions
 
 - `get_gmail_service()`: Handles authentication and creates the Gmail API service object.
-- `create_message(sender, to, subject, message_text)`: Creates an email message.
+- `create_message(sender, to, subject, message_text, file_paths=None)`: Creates an email message, optionally with attachments.
 - `send_message(service, user_id, message)`: Sends the email message.
-- `main()`: The main function that ties everything together.
+- `main()`: The main function that demonstrates how to use the script.
 
 ## Note
 
 - Keep your `credentials.json` and `token.json` files secure and do not share them publicly.
 - If you modify the SCOPES, delete the `token.json` file and re-authenticate.
 - Ensure all users of your application (including yourself) are added as test users while the app is in testing mode.
+- When adding attachments, make sure to provide the full file path and that the files exist at the specified locations.
 
 ## Troubleshooting
 
@@ -112,5 +126,6 @@ If you encounter any issues:
 - Verify that you've granted the necessary permissions during the OAuth flow
 - Confirm that you're using a Google account that's been added as a test user
 - If you get a "400 Bad Request" error, ensure your OAuth consent screen is properly configured
+- For attachment issues, double-check the file paths and ensure the files exist and are accessible
 
 For more information, refer to the [Gmail API Python Quickstart](https://developers.google.com/gmail/api/quickstart/python) guide.
