@@ -47,8 +47,8 @@ def send_message(service, user_id, message):
 
 def main():
     service = get_gmail_service()
-    sender = "omkarkadle@gmail.com"
-    to = "pranavkolte111@gmail.com"
+    sender = "your_email@gmail.com"
+    to = "sender@example.com"
     subject = "Test Email from Gmail API"
     message_text = "This is a test email sent using the Gmail API."
     
