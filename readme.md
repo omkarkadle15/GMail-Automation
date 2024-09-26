@@ -36,14 +36,16 @@ This project demonstrates how to use the Gmail API to send emails, with or witho
    - Add the necessary scopes (see the "Scopes" section below)
    - Add test users (see the "Adding Test Users" section below)
 
-6. Install Required Libraries
-   ```
-   pip install --upgrade google-auth-oauthlib google-auth-httplib2 google-api-python-client
-   ```
-
-7. Set Up the Project
+6. Set Up the Project
    - Clone this repository or create a new directory for your project
    - Place the `credentials.json` file in the same directory as the script
+
+7. Install Required Libraries
+   - Ensure you have the `requirements.txt` file in your project directory
+   - Run the following command to install the required packages:
+     ```
+     pip install -r requirements.txt
+     ```
 
 ## Scopes
 
@@ -103,6 +105,7 @@ Note: Test users must have a Google account. If your application is in testing m
 ## File Description
 
 - `gmail.py`: The main Python script that interacts with the Gmail API to send emails with or without attachments.
+- `requirements.txt`: Lists all the Python packages required to run the script.
 
 ## Functions
 
@@ -127,5 +130,6 @@ If you encounter any issues:
 - Confirm that you're using a Google account that's been added as a test user
 - If you get a "400 Bad Request" error, ensure your OAuth consent screen is properly configured
 - For attachment issues, double-check the file paths and ensure the files exist and are accessible
+- If you get import errors, make sure you've installed all required packages using `pip install -r requirements.txt`
 
 For more information, refer to the [Gmail API Python Quickstart](https://developers.google.com/gmail/api/quickstart/python) guide.
